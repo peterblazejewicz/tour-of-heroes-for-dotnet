@@ -29,6 +29,7 @@ const barrels: string[] = [
 
   // Thirdparty barrels.
   'rxjs',
+  '@vaadin/angular2-polymer',
 
   // App specific barrels.
   'app',
@@ -48,6 +49,7 @@ declare var System: any;
 System.config({
   map: {
     '@angular': 'vendor/@angular',
+    '@vaadin': 'vendor/@vaadin',
     'rxjs': 'vendor/rxjs',
     'main': 'main.js'
   },
