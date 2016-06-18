@@ -4,7 +4,8 @@
     "**/.svn": true,
     "**/.DS_Store": true,
     "obj": true,
-    "bin": true
+    "bin": true,
+    "tmp": true
   },
   "search.exclude": {
     "**/node_modules": true,
@@ -12,7 +13,8 @@
     "**/bin": true,
     "**/obj": true,
     "**/typings": true,
-    "dist": true
+    "dist": true,
+    "tmp": true
   },
   "eslint.enable": false,
   "jshint.enable": false
