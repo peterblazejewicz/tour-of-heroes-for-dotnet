@@ -1,1 +1,0 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../Users/piotrblazejewicz/git/tour-of-heroes-for-dotnet/TourOfHeroes/src/TourOfHeroes.Web/tmp/broccoli_type_script_compiler-input_base_path-LvCjjlft.tmp/0/src/app/shared/index.ts"],"names":[],"mappings":";;;;AAAA,iBAAc,QAAQ,CAAC,EAAA","sourcesContent":["export * from './hero';\n"]}
