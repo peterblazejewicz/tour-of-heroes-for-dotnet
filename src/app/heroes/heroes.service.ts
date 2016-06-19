@@ -40,11 +40,9 @@ export class HeroesService {
    * @param {(number | string)} id (description)
    * @returns (description)
    */
-  getHero(id: number | string) {
+  getHero(id: number | string): Promise<Hero> {
     return heroesPromise
-      .then(heroes => {
-        heroes.filter(hero => hero.id === parseInt(id as string, 10))
-      })
+      .then(heroes => heroes.filter(hero => hero.id === +id)[0])
   }
 }
 
