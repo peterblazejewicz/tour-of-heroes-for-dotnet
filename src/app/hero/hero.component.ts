@@ -1,34 +1,35 @@
 import { Component, OnInit, OnDestroy, } from '@angular/core';
-import { ISubscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PolymerElement } from '@vaadin/angular2-polymer';
 import { HeroesService } from '../heroes/heroes.service';
+import { Hero } from '../shared';
 
 @Component({
   moduleId: module.id,
   selector: 'app-hero',
   templateUrl: 'hero.component.html',
   styleUrls: ['hero.component.css'],
+  directives: [
+    PolymerElement('paper-input'),
+    PolymerElement('vaadin-date-picker')
+  ],
   providers: [
     HeroesService
   ]
 })
 
-export class HeroComponent implements OnInit, OnDestroy {
+export class HeroComponent implements OnInit {
 
-  private subscription: ISubscription;
+  hero: Hero;
 
   constructor(private route: ActivatedRoute, private router: Router, private service: HeroesService) { }
 
   ngOnInit() {
-    this.subscription = this.route.params.subscribe(params => {
-      let id = parseInt(params['id'], 10);
-      // todo service call
-      // this.service
-    });
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe()
+    let id = +this.route.snapshot.params['id'];
+    this.service.getHero(id)
+      .then(hero => {
+        this.hero = hero;
+      });
   }
 
 }
