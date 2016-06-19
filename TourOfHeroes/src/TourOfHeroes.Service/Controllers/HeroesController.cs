@@ -19,7 +19,7 @@ namespace TourOfHeroes.Service.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            string path = Path.Combine(HostingEnvironment.ContentRootPath, "Data", "heroes.json");
+            string path = Path.Combine(HostingEnvironment.WebRootPath, "data", "heroes.json");
             if (System.IO.File.Exists(path) == false)
             {
                 return this.NotFound("Can't find backing data file");
@@ -32,7 +32,7 @@ namespace TourOfHeroes.Service.Controllers
         [HttpGet("{id:int}")]
         public IActionResult Get(int id)
         {
-            string path = Path.Combine(HostingEnvironment.ContentRootPath, "Data", "heroes.json");
+            string path = Path.Combine(HostingEnvironment.WebRootPath, "data", "heroes.json");
             if (System.IO.File.Exists(path) == false)
             {
                 return this.NotFound("Can't find backing data file");
