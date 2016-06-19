@@ -30,5 +30,10 @@ to host Angular client via built-in Node based server
 TODO: 
 R&D for `nb build` details (for development and production environment)
 
+## Web API Endpoints
+
+- http://localhost:5000/api/heroes/
+- http://localhost:5000/api/heroes/{id}
+
 ## Author
 @peterblazejewicz
