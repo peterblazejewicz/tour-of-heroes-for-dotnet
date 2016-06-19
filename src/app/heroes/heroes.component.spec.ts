@@ -2,6 +2,7 @@
 
 import { By }           from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { Router } from '@angular/router';
 
 import {
   beforeEach, beforeEachProviders,
@@ -13,8 +14,13 @@ import {
 import { HeroesComponent } from './heroes.component';
 
 describe('Component: Heroes', () => {
-  it('should create an instance', () => {
-    let component = new HeroesComponent();
-    expect(component).toBeTruthy();
-  });
+  // TODO
+  beforeEachProviders(() => [Router]);
+
+  it('should create an instance', inject([Router],
+    (router: Router) => {
+      let component = new HeroesComponent(router);
+      expect(component).toBeTruthy();
+    }));
+
 });

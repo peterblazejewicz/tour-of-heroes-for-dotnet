@@ -1,19 +1,23 @@
 import { Component, OnInit, OnDestroy, } from '@angular/core';
 import { ISubscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Router } from '@angular/router';
+import { HeroesService } from '../heroes/heroes.service';
 
 @Component({
   moduleId: module.id,
   selector: 'app-hero',
   templateUrl: 'hero.component.html',
-  styleUrls: ['hero.component.css']
+  styleUrls: ['hero.component.css'],
+  providers: [
+    HeroesService
+  ]
 })
 
 export class HeroComponent implements OnInit, OnDestroy {
 
   private subscription: ISubscription;
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute, private router: Router, service: HeroesService) { }
 
   ngOnInit() {
     this.subscription = this.route.params.subscribe(params => {

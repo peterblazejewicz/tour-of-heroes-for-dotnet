@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ROUTER_DIRECTIVES }  from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router, ROUTER_DIRECTIVES, RouterState}  from '@angular/router';
 import { PolymerElement } from '@vaadin/angular2-polymer';
+import { ISubscription } from 'rxjs/Subscription';
 import { HeroesComponent } from './heroes/heroes.component';
 import { HeroComponent } from './hero/hero.component';
 
@@ -18,16 +19,19 @@ import { HeroComponent } from './hero/hero.component';
   ]
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
 
   title = 'Tour of Heroes';
-  isInChildView = false;
+  subscription: ISubscription
 
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
+
+  ngOnDestroy() { }
 
   goBack() {
+    this.router.navigate(['/heroes'], {});
   }
 
 }
