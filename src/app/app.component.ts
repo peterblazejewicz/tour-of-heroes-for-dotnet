@@ -31,7 +31,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy() { }
 
   goBack() {
-    this.router.navigate(['/heroes'], {});
+    this.router.navigate(['/heroes']);
   }
 
 }
