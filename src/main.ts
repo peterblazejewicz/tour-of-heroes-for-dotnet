@@ -1,11 +1,16 @@
 import { bootstrap } from '@angular/platform-browser-dynamic';
 import { enableProdMode } from '@angular/core';
 import { AppComponent, environment } from './app/';
-import { ROUTER_PROVIDERS } from '@angular/router';
+import { APP_ROUTER_PROVIDERS } from './app/app.routes';
 
 if (environment.production) {
   enableProdMode();
 }
 
-bootstrap(AppComponent, [ ROUTER_PROVIDERS ]);
+bootstrap(AppComponent, [
+  APP_ROUTER_PROVIDERS
+])
+.catch(error => {
+  console.error(error);
+});
 
