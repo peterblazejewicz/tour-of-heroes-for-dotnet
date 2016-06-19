@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PolymerElement } from '@vaadin/angular2-polymer';
-import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, Router, RouteData } from '@angular/router-deprecated';
+import { ROUTER_DIRECTIVES, ROUTER_PROVIDERS, Router } from '@angular/router';
 import { HeroesComponent } from './heroes/heroes.component';
 import { HeroComponent } from './hero/hero.component';
 
@@ -18,12 +18,10 @@ import { HeroComponent } from './hero/hero.component';
   ]
 })
 
-@RouteConfig([
+@Routes([
   {
     path: '/heroes',
-    name: 'Heroes',
     component: HeroesComponent,
-    useAsDefault: true,
     data: {
       title: 'All heroes',
       root: true
@@ -43,10 +41,11 @@ export class AppComponent implements OnInit {
   title = 'Tour of Heroes';
   isInChildView = false;
 
-  constructor(private _router: Router){}
+  constructor(private _router: Router, private _data: RouteData){}
 
   ngOnInit() {
-
+     let instrution = this._router;
+     let data = this._data;
   }
 
   goBack() {
