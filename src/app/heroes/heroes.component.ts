@@ -1,17 +1,47 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PolymerElement } from '@vaadin/angular2-polymer';
+import { Hero } from '../shared';
+import { HeroesService } from './heroes.service';
 
 @Component({
   moduleId: module.id,
   selector: 'app-heroes',
   templateUrl: 'heroes.component.html',
-  styleUrls: ['heroes.component.css']
+  styleUrls: ['heroes.component.css'],
+  directives: [
+    PolymerElement('vaadin-grid')
+  ],
+  providers: [
+    HeroesService
+  ]
 })
 export class HeroesComponent implements OnInit {
 
-  constructor(private router: Router) {}
+  heroes: Hero[];
+
+  constructor(private router: Router, private service: HeroesService) { }
 
   ngOnInit() {
+    this.getHeroes();
+  }
+
+  onSelectedItemsChanged(event: any) {
+    let selectedIndex: number = event.target.selection.selected()[0];
+    if (selectedIndex !== undefined) {
+      this.goToHeroDetailById(this.heroes[selectedIndex].id);
+    }
+  }
+
+  private getHeroes() {
+    this.service.getHeroes()
+      .then(heroes => {
+        this.heroes = heroes;
+      });
+  }
+
+  private goToHeroDetailById(id: number) {
+    this.router.navigate(['/hero', id]);
   }
 
 }
