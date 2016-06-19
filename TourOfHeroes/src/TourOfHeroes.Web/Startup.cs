@@ -30,6 +30,8 @@ namespace TourOfHeroes.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // add CORS support (used during development)
+            services.AddCors();
             // Add framework services.
             services.AddMvc()
                 .AddJsonOptions(o =>
@@ -61,6 +63,15 @@ namespace TourOfHeroes.Web
                 });
                 aBranch.UseStaticFiles();
             });
+            // allow CORS during development
+            if (env.IsDevelopment())
+            {
+                app.UseCors(builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials());
+            }
             app.UseMvc();
         }
     }
