@@ -79,8 +79,7 @@
       "public",
       "src",
       "tmp",
-      "typings",
-
+      "typings"
     ],
     "excludeFiles": [
       ".editorconfig",
