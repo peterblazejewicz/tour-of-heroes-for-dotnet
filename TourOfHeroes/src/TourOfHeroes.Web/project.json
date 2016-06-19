@@ -100,7 +100,7 @@
       "bower install"
     ],
     "precompile": [
-      "ng build"
+
     ],
     "prepublish": [
       "npm install",
