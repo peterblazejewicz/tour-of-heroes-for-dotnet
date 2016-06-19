@@ -75,9 +75,12 @@
     "exclude": [
       "config",
       "e2e",
+      "node_modules",
+      "public",
       "src",
       "tmp",
-      "typings"
+      "typings",
+
     ],
     "excludeFiles": [
       ".editorconfig",
@@ -90,6 +93,10 @@
     ]
   },
   "scripts": {
+    "postrestore": [
+      "npm install",
+      "bower install"
+    ],
     "precompile": [
       "ng build"
     ],
