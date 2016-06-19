@@ -35,9 +35,10 @@ export class HeroesComponent implements OnInit {
 
   private getHeroes() {
     this.service.getHeroes()
-      .then(heroes => {
-        this.heroes = heroes;
-      });
+      .subscribe(
+        heroes => this.heroes = heroes,
+        error => console.log(error)
+      );
   }
 
   private goToHeroDetailById(id: number) {

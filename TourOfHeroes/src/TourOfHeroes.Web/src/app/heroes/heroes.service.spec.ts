@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-
+import { Http } from '@angular/http';
 import {
   beforeEach, beforeEachProviders,
   describe, xdescribe,
@@ -9,10 +9,12 @@ import {
 import { HeroesService } from './heroes.service';
 
 describe('Heroes Service', () => {
-  beforeEachProviders(() => [HeroesService]);
+  beforeEachProviders(() => [Http]);
 
   it('should ...',
-      inject([HeroesService], (service: HeroesService) => {
-    expect(service).toBeTruthy();
-  }));
+    inject([Http],
+      (http: Http) => {
+        let service = new HeroesService(http);
+        expect(service).toBeTruthy();
+      }));
 });
